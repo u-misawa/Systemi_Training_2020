@@ -14,10 +14,12 @@ public class CloseableUtil {
 
 	public static void close(Closeable closeable) {
 
-		if (closeable == null) {
+		//中身がnullなら何も返さない
+		if (closeable == null) 	{
 			return;
 		}
 
+		//closeableをクローズする
 		try {
 			closeable.close();
 		} catch (IOException e) {

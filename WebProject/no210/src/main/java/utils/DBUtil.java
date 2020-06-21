@@ -11,13 +11,14 @@ import exception.SQLRuntimeException;
  */
 public class DBUtil {
 
+    //クラスフィールドに定数として、DBとの接続するための情報を定義
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/simple_twitter";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
     static {
-
+        //クラスをロードすることで、DBドライバクラスを登録できる
         try {
             Class.forName(DRIVER);
         } catch (ClassNotFoundException e) {
@@ -33,8 +34,9 @@ public class DBUtil {
     public static Connection getConnection() {
 
         try {
+            //URL、USER、PASSWORDを使ってコネクションを取得
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-
+            //オートコミットをOFFにする
             connection.setAutoCommit(false);
 
             return connection;
